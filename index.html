@@ -2,31 +2,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WhatsApp Channel Buttons</title>
 
 <style>
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c92d2);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
     font-family:Arial, sans-serif;
     text-align:center;
+    padding:20px;
+}
+
+/* Animated Background */
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 /* Description */
 .description{
     color:#ffffff;
     font-size:16px;
-    max-width:400px;
+    max-width:450px;
     margin-bottom:20px;
-    opacity:0.9;
+    opacity:0.95;
+    line-height:1.6;
 }
 
-/* Text */
+/* Click Text */
 .click-text{
     color:#fff;
     font-size:22px;
@@ -55,11 +72,13 @@ body{
     100%{transform:translateY(0);}
 }
 
-/* Base Button Style */
+/* Base Button */
 .btn{
+    width:100%;
+    max-width:320px;
     position:relative;
-    padding:18px 40px;
-    font-size:18px;
+    padding:16px;
+    font-size:16px;
     font-weight:bold;
     color:white;
     border:none;
@@ -90,6 +109,19 @@ body{
     100%{box-shadow:0 8px 0 #2b0080, 0 0 10px #8E2DE2;}
 }
 
+/* Message Button */
+.message-btn{
+    background:linear-gradient(145deg,#ff512f,#dd2476);
+    box-shadow:0 8px 0 #8a0f3c, 0 0 20px #ff512f, 0 15px 25px rgba(0,0,0,0.4);
+    animation:pulse2 2s infinite;
+}
+
+@keyframes pulse2{
+    0%{box-shadow:0 8px 0 #8a0f3c, 0 0 10px #ff512f;}
+    50%{box-shadow:0 8px 0 #8a0f3c, 0 0 25px #ff512f;}
+    100%{box-shadow:0 8px 0 #8a0f3c, 0 0 10px #ff512f;}
+}
+
 .btn:hover{
     transform:translateY(4px);
 }
@@ -98,24 +130,36 @@ body{
     transform:translateY(8px);
     box-shadow:0 3px 0 #000;
 }
+
+/* Responsive */
+@media(max-width:500px){
+    .btn{
+        font-size:14px;
+        padding:14px;
+    }
+}
 </style>
 
 </head>
 <body>
 
 <div class="description">
-    Hamare WhatsApp Channel ko join karein aur daily updates, new information aur important news sab se pehle hasil karein.
+Hamare WhatsApp Channel ko join karein aur daily updates, new information aur important news sab se pehle hasil karein.
 </div>
 
 <div class="click-text">Click Here</div>
 <div class="arrow">⬇</div>
 
 <button class="btn join-btn" onclick="joinChannel()">
-    Join WhatsApp Channel
+Join WhatsApp Channel
 </button>
 
 <button class="btn copy-btn" onclick="copyLink()">
-    Channel Link Copy Karen
+Channel Link Copy Karen
+</button>
+
+<button class="btn message-btn" onclick="messageWhatsApp()">
+Message Imtiaz Ali on WhatsApp
 </button>
 
 <script>
@@ -123,13 +167,16 @@ body{
 const channelLink = "https://whatsapp.com/channel/0029Vb7OGqb9mrGY3eVdBQ2V";
 
 function joinChannel(){
-    window.open(channelLink, "_blank");
+    window.location.href = channelLink;
 }
 
 function copyLink(){
     navigator.clipboard.writeText(channelLink);
-    alert("Link Copy Ho Gaya ✅");
-    window.open("https://wa.me/?text=" + encodeURIComponent(channelLink), "_blank");
+    window.location.href = "https://wa.me/?text=" + encodeURIComponent(channelLink);
+}
+
+function messageWhatsApp(){
+    window.location.href = "https://wa.me/923069348405";
 }
 
 </script>
