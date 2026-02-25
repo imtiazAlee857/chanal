@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WhatsApp Channel Buttons</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    font-family:Arial, sans-serif;
+    text-align:center;
+}
+
+/* Description */
+.description{
+    color:#ffffff;
+    font-size:16px;
+    max-width:400px;
+    margin-bottom:20px;
+    opacity:0.9;
+}
+
+/* Text */
+.click-text{
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+    animation:blink 1s infinite alternate;
+    text-shadow:0 0 10px #fff, 0 0 20px #25D366;
+}
+
+@keyframes blink{
+    from{opacity:0.6;}
+    to{opacity:1;}
+}
+
+/* Arrow */
+.arrow{
+    font-size:40px;
+    color:#25D366;
+    animation:arrowMove 1s infinite;
+    text-shadow:0 0 15px #25D366;
+}
+
+@keyframes arrowMove{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(10px);}
+    100%{transform:translateY(0);}
+}
+
+/* Base Button Style */
+.btn{
+    position:relative;
+    padding:18px 40px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    transition:all 0.2s ease-in-out;
+    margin-top:15px;
+}
+
+/* Join Button */
+.join-btn{
+    background:linear-gradient(145deg,#25D366,#128C7E);
+    box-shadow:0 8px 0 #0b5d4f, 0 15px 20px rgba(0,0,0,0.4);
+}
+
+/* Copy Button */
+.copy-btn{
+    background:linear-gradient(145deg,#8E2DE2,#4A00E0);
+    box-shadow:0 8px 0 #2b0080, 0 0 20px #8E2DE2, 0 15px 25px rgba(0,0,0,0.4);
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{box-shadow:0 8px 0 #2b0080, 0 0 10px #8E2DE2;}
+    50%{box-shadow:0 8px 0 #2b0080, 0 0 25px #8E2DE2;}
+    100%{box-shadow:0 8px 0 #2b0080, 0 0 10px #8E2DE2;}
+}
+
+.btn:hover{
+    transform:translateY(4px);
+}
+
+.btn:active{
+    transform:translateY(8px);
+    box-shadow:0 3px 0 #000;
+}
+</style>
+
+</head>
+<body>
+
+<div class="description">
+    Hamare WhatsApp Channel ko join karein aur daily updates, new information aur important news sab se pehle hasil karein.
+</div>
+
+<div class="click-text">Click Here</div>
+<div class="arrow">⬇</div>
+
+<button class="btn join-btn" onclick="joinChannel()">
+    Join WhatsApp Channel
+</button>
+
+<button class="btn copy-btn" onclick="copyLink()">
+    Channel Link Copy Karen
+</button>
+
+<script>
+
+const channelLink = "https://whatsapp.com/channel/0029Vb7OGqb9mrGY3eVdBQ2V";
+
+function joinChannel(){
+    window.open(channelLink, "_blank");
+}
+
+function copyLink(){
+    navigator.clipboard.writeText(channelLink);
+    alert("Link Copy Ho Gaya ✅");
+    window.open("https://wa.me/?text=" + encodeURIComponent(channelLink), "_blank");
+}
+
+</script>
+
+</body>
+</html>
